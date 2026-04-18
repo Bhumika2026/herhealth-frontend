@@ -1,0 +1,61 @@
+/* src/styles/globals.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'DM Sans', system-ui, sans-serif;
+    background-color: #FDF8F4;
+    color: #2D2D35;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3 { font-family: 'Playfair Display', Georgia, serif; }
+}
+
+@layer components {
+  .btn-primary {
+    @apply bg-rose text-white font-medium px-5 py-2.5 rounded-2xl hover:bg-rose-dark
+           transition-all duration-200 shadow-soft hover:shadow-glow active:scale-95;
+  }
+  .btn-outline {
+    @apply border-2 border-rose text-rose font-medium px-5 py-2.5 rounded-2xl
+           hover:bg-rose-light transition-all duration-200 active:scale-95;
+  }
+  .card {
+    @apply bg-white rounded-3xl p-5 shadow-card border border-gray-50;
+  }
+  .badge {
+    @apply inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium;
+  }
+  .input {
+    @apply w-full border border-gray-200 rounded-2xl px-4 py-3 text-sm
+           focus:outline-none focus:ring-2 focus:ring-rose/30 focus:border-rose
+           bg-white placeholder-gray-400 transition-all;
+  }
+  .nav-link {
+    @apply flex flex-col items-center gap-1 text-xs text-gray-400
+           hover:text-rose transition-colors duration-200;
+  }
+  .nav-link.active { @apply text-rose; }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #E8647A44; border-radius: 99px; }
+
+/* Animations */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+@keyframes pulse-rose {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(232,100,122,0.4); }
+  50%       { box-shadow: 0 0 0 8px rgba(232,100,122,0); }
+}
+.fade-in-up { animation: fadeInUp 0.4s ease both; }
+.pulse-rose { animation: pulse-rose 2s infinite; }
